@@ -23,23 +23,25 @@ exports.createPoll = function(req, res, next) {
     }
 
     // if we get the right number of answers
-    if (Object.keys(answers).length >= 2) {
-      // create number of answers provided	
+    //if (Object.keys(answers).length >= 2) {
+      // create number of answers provided
       var tempAnswers = {};
-
-        for (var i = 0; i < Object.keys(answers).length; i++) {
-          tempAnswers[Object.keys(answers)[i]] = {
-          	a: answers[Object.keys(answers)[i]],
+      var ansArr = Object.keys(answers);
+        for (var i = 0; i < ansArr.length; i++) {
+          if (tempAnswers[ansArr[i]]) {
+          tempAnswers[ansArr[i]] = {
+          	a: answers[ansArr[i]],
           	count: 0
           }
         }
+      }
 
-    } 
+    //}
 
-    if (Object.keys(answers).length < 2) {  
+    if (Object.keys(answers).length < 2) {
       return res.status(422).send({ error: 'please enter at least two answers' });
     }
-  
+
     const poll = new Poll ({
       photo: photo,
       question: question,
