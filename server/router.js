@@ -14,7 +14,7 @@ module.exports = function(app, io) {
   // app.use(passport.initialize());
   // app.use(passport.session());
 
-  app.get('/', function(req, res) {
+  app.get('/', requireAuth, function(req, res) {
   	res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
 

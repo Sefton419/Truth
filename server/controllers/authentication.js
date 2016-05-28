@@ -21,7 +21,10 @@ exports.signup = function(req, res, next) {
   const password = req.body.password;
   console.log('inside signup in .controllers/authentication pw,user is:', username, password);
   // const photo = req.body.photo;
+<<<<<<< be2ce2d47d53295eb281d09a3a2d10f5fcd08c17
   //console.log(photo)
+=======
+>>>>>>> [Progress] fixes some poll functionality
 
   if ( !username || !password ) {
   	return res.status(422).send({ error: 'You must provide username and password' })
